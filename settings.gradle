@@ -1,0 +1,3 @@
+rootProject.name='SocialDistancing'
+include ':app'
+include ':openCVLibrary3410'
