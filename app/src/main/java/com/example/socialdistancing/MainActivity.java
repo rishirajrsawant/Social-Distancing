@@ -3,7 +3,6 @@ package com.example.socialdistancing;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.SurfaceView;
 import android.widget.Toast;
 
@@ -46,7 +45,6 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
         cameraBridgeViewBase.setCvCameraViewListener(this);
         cameraBridgeViewBase.enableFpsMeter();
         cameraBridgeViewBase.setMaxFrameSize(320, 240);
-
 
 
         //System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
@@ -100,32 +98,30 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
 
         Imgproc.cvtColor(frame, frame, Imgproc.COLOR_GRAY2RGBA);
 
-                    for(Rect rect : foundLocations.toArray()){
-                        Imgproc.rectangle(frame, new Point(rect.x, rect.y), new Point(rect.x + rect.width, rect.y + rect.height), new Scalar(0, 255, 0), 2);
-                        double ptCenterX = rect.x + 0.5 * rect.width;
-                        double ptCenterY = rect.y + 0.5 * rect.height;
-                        Point center = new Point(ptCenterX,ptCenterY);
-                        Imgproc.circle(frame, center, 4, new Scalar(255,0,0), 2);
-                        centers.add(center);
+        for(Rect rect : foundLocations.toArray()){
+            Imgproc.rectangle(frame, new Point(rect.x, rect.y), new Point(rect.x + rect.width, rect.y + rect.height), new Scalar(0, 255, 0), 2);
+            double ptCenterX = rect.x + 0.5 * rect.width;
+            double ptCenterY = rect.y + 0.5 * rect.height;
+            Point center = new Point(ptCenterX,ptCenterY);
+            Imgproc.circle(frame, center, 4, new Scalar(255,0,0), 2);
+            centers.add(center);
 
-                            for (int i = 0; i < centers.size(); i++) {
+            for (int i = 0; i < centers.size(); i++) {
 
-                                for (int j = i + 1; j < centers.size(); j++){
-                                    if (centers.size() >= 2) {
-                                        double minDistance = 50;
-                                        double distance = Math.sqrt(Math.pow(centers.get(i).x  - centers.get(j).x, 2) + Math.pow(centers.get(i).y - centers.get(j).y, 2));
-                                        line(frame, new Point(centers.get(i).x,centers.get(i).y), new Point(centers.get(j).x,centers.get(j).y), new Scalar(255, 0, 0));
-                                        Log.i("PointOfI", "distance:" + distance);
-                                        Log.i("PointOfI", "     ");
-                                        if (distance < minDistance) {
-                                            Imgproc.rectangle(frame, new Point(rect.x, rect.y), new Point(rect.x + rect.width, rect.y + rect.height), new Scalar(255, 0, 0), 2);
-
-                                        }
-                                    }
-                                }
-                            }
-
+                for (int j = i + 1; j < centers.size(); j++){
+                    if (centers.size() >= 2) {
+                        double minDistance = 100;
+                        double distance = Math.sqrt(Math.pow(centers.get(i).x  - centers.get(j).x, 2) + Math.pow(centers.get(i).y - centers.get(j).y, 2));
+                        line(frame, new Point(centers.get(i).x,centers.get(i).y), new Point(centers.get(j).x,centers.get(j).y), new Scalar(255, 0, 0));
+                        if (distance < minDistance) {
+                            Imgproc.rectangle(frame, new Point(rect.x, rect.y), new Point(rect.x + rect.width, rect.y + rect.height), new Scalar(255, 0, 0), 2);
+                            Imgproc.putText(frame, "Please follow Social Distancing", new Point(5,230), 0, 0.5, new Scalar(0,0,255), 1);
+                        }
                     }
+                }
+            }
+
+        }
         return frame;
     }
 
