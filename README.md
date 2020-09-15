@@ -12,7 +12,14 @@ Application demo:
 
 Screenshots:
 
+1.
 ![Social Distancing with 2 people](app-demo/socialdistancing1.jpg)
+
+2.
+![Social Distancing with 2 people](app-demo/socialdistancing2.png)
+
+3.
+![Social Distancing with 3 people](app-demo/social3.jpg)
 
 OpenCV for Android SDK version: 3.4.10
 
