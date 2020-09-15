@@ -24,6 +24,4 @@ OpenCV for Android SDK version: 3.4.10
 
 Tested on Android 10 - API 29
 
-More screenshots present in the app-demo folder.
-
 For more information and queries, please feel free to email me.
