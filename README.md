@@ -5,9 +5,8 @@ In indoor settings, for social gatherings, people can check whether social dista
 
 Using, Histogram of Oriented Gradients, people are detected and pairwise distances are calculated.
 
-For more information and queries, please feel free to email me.
-
 Application demo:
+
 ![Social Distancing using OpenCV and Android](app-demo/HOG.gif)
 
 Screenshots:
@@ -19,10 +18,12 @@ Screenshots:
 ![Social Distancing with 2 people](app-demo/socialdistancing2.png)
 
 3.
-![Social Distancing with 3 people](app-demo/social3.jpg)
+![Social Distancing with 3 people](app-demo/social3.png)
 
 OpenCV for Android SDK version: 3.4.10
 
 Tested on Android 10 - API 29
 
 More screenshots present in the app-demo folder.
+
+For more information and queries, please feel free to email me.
